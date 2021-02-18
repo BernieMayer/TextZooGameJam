@@ -1,7 +1,9 @@
-
-print("Hello World")
-
-input = input()
-print(input)
+import ZooCharacterCreatorUI as ZooCharacterCreatorUI
 
 
+def main():   
+    zooUI = ZooCharacterCreatorUI.ZooCharacterCreatorUI()
+    zooUI.runCharacterCreatorUI()
+
+if __name__ == "__main__":
+    main()
