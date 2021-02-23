@@ -1,6 +1,5 @@
 import ZooCharacterCreatorUI as ZooCharacterCreatorUI
 
-
 def main():   
     zooUI = ZooCharacterCreatorUI.ZooCharacterCreatorUI()
     zooUI.runCharacterCreatorUI()
