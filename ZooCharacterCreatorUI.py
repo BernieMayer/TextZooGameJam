@@ -1,4 +1,8 @@
 import ZooCharacter as ZooCharacter
+import CombatSystem as CombatSystem
+import Enemy as Enemy
+
+
 
 class ZooCharacterCreatorUI:
 
@@ -27,6 +31,8 @@ class ZooCharacterCreatorUI:
         for zooClass in ZooCharacter.ZooCharacter.ZooClassEnum:
             print(zooClass.value)
         
+        print("")
+        
         _input = input()  
 
         for zooClass in ZooCharacter.ZooCharacter.ZooClassEnum:
@@ -37,6 +43,45 @@ class ZooCharacterCreatorUI:
         
         print("This is your character!")
         print(repr(zooCharacter))
+
+        combat_system = CombatSystem.CombatSystem()
+
+        numEnemiesDefeated = 0
+        current_enemy = Enemy.Enemy()
+
+
+        while (zooCharacter.health > 0 ):
+            #get input for movement 
+            self.__handle_combat_input(zooCharacter)
+            #handle combat
+            combat_system.performCombat(zooCharacter, current_enemy)
+            if (current_enemy.health < 0):
+                numEnemiesDefeated += 1
+                current_enemy = Enemy.Enemy()
+                print("The enemy is defeated")
+            else: 
+                print(f"The enemy you are facing currently has {current_enemy.health} health left\nYour character has {zooCharacter.health}")
+            
+            
+
+
+        print(f"Your zoo chatacter has defeated {numEnemiesDefeated} enemies")
+
+
+    
+    def __handle_combat_input(self, zooCharacter):
+        valid_input = False 
+        while( not valid_input):
+            print("Your options for combat are: \nattack \nblock \n")
+            _input = input()
+
+            for combatOption in ZooCharacter.ZooCharacter.CombatMode:
+                if _input == combatOption.value:
+                    valid_input = True
+                    zooCharacter.set_combat_mode(combatOption)
+
+
+
         
 
         
