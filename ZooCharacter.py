@@ -72,7 +72,7 @@ class ZooCharacter:
         self.combat_mode = combat_mode   
 
     def __repr__(self):
-        return f"Zoo Race is {self.zooRace} Zoo Class is {self.zooClass} \n" \
+        return f"Zoo Race is {self.zooRace.value} Zoo Class is {self.zooClass.value} \n" \
         + f"Combat factor: {self.combat_factor}\n" \
         + f"Cuteness factor: {self.cuteness_factor}\n" \
         + f"Tameness factor: {self.tameness_factor}\n" \

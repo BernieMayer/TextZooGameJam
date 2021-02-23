@@ -1,6 +1,6 @@
 import ZooCharacter as ZooCharacter
-import CombatSystem
-import Enemy
+import CombatSystem as CombatSystem
+import Enemy as Enemy
 
 
 
@@ -31,6 +31,8 @@ class ZooCharacterCreatorUI:
         for zooClass in ZooCharacter.ZooCharacter.ZooClassEnum:
             print(zooClass.value)
         
+        print("")
+        
         _input = input()  
 
         for zooClass in ZooCharacter.ZooCharacter.ZooClassEnum:
@@ -56,6 +58,9 @@ class ZooCharacterCreatorUI:
             if (current_enemy.health < 0):
                 numEnemiesDefeated += 1
                 current_enemy = Enemy.Enemy()
+                print("The enemy is defeated")
+            else: 
+                print(f"The enemy you are facing currently has {current_enemy.health} health left\nYour character has {zooCharacter.health}")
             
             
 
