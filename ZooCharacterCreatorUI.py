@@ -1,4 +1,5 @@
 import ZooCharacter as ZooCharacter
+import CombatSystem
 
 class ZooCharacterCreatorUI:
 
@@ -37,6 +38,37 @@ class ZooCharacterCreatorUI:
         
         print("This is your character!")
         print(repr(zooCharacter))
+
+        combat_system = CombatSystem()
+
+        numEnemiesDefeated = 0
+
+
+        while (zooCharacter.health > 0 ):
+            #get input for movement 
+            self.__handle_combat_input(zooCharacter)
+            #handle combat
+            combat_system.performCombat(zooCharacter, Enemy())
+            
+
+
+        print(f"Your zoo chatacter has defeated {numEnemiesDefeated} enemies")
+
+
+    
+    def __handle_combat_input(self, zooCharacter):
+        valid_input = False 
+        while( not valid_input):
+            print("Your options for combat are: \nattack \nblock \n")
+            _input = input()
+
+            for combatOption in ZooCharacter.ZooCharacter.CombatMode:
+                if _input == combatOption.value:
+                    valid_input = True
+                    zooCharacter.set_combat_mode(combatOption)
+
+
+
         
 
         
