@@ -1,5 +1,8 @@
 import ZooCharacter as ZooCharacter
 import CombatSystem
+import Enemy
+
+
 
 class ZooCharacterCreatorUI:
 
@@ -39,16 +42,21 @@ class ZooCharacterCreatorUI:
         print("This is your character!")
         print(repr(zooCharacter))
 
-        combat_system = CombatSystem()
+        combat_system = CombatSystem.CombatSystem()
 
         numEnemiesDefeated = 0
+        current_enemy = Enemy.Enemy()
 
 
         while (zooCharacter.health > 0 ):
             #get input for movement 
             self.__handle_combat_input(zooCharacter)
             #handle combat
-            combat_system.performCombat(zooCharacter, Enemy())
+            combat_system.performCombat(zooCharacter, current_enemy)
+            if (current_enemy.health < 0):
+                numEnemiesDefeated += 1
+                current_enemy = Enemy.Enemy()
+            
             
 
 
